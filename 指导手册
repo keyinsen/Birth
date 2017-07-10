@@ -1,3 +1,47 @@
 1、key:generate:设置应用程序秘钥，如果你没有设置应用程序密钥，你的用户 Session 和 其他加密数据将不安全！
 
 2、config 文件夹中经常配置的一般有两个文件：app.php 和 database.php 两个文件，他们一个是配置项目杂项的、一个是配置数据库的。
+
+
+项目构建
+一、 利用数据库迁移建表 composer dump-autoload(自动加载命令执行成功)
+1、创建管理员表
+php artisan make:migration create_shop_admin_table --create=shop_admin
+2、创建角色表
+php artisan make:migration create_shop_role_table --create=shop_role
+3、管理员-角色关联表
+php artisan make:migration create_shop_admin_role_table --create=shop_admin_role
+4、权限表
+php artisan make:migration create_shop_privilege_table --create=shop_privilege
+5、模块
+php artisan make:migration create_shop_module_table --create=shop_module
+6、角色权限
+php artisan make:migration create_shop_role_module_table --create=shop_role_module
+7、用户表
+php artisan make:migration create_shop_user_table --create=shop_user
+8、用户头像
+php artisan make:migration create_shop_avatar_table --create=shop_avatar
+9、商品类别
+php artisan make:migration create_shop_category_table --create=shop_category
+10、商品信息
+php artisan make:migration create_shop_goods_table --create=shop_goods
+11、类别特征
+php artisan make:migration create_shop_attr_table --create=shop_attr
+12、商品特征值表
+php artisan make:migration create_shop_goods_attr_table --create=shop_goods_attr
+13、商品图片表
+php artisan make:migration create_shop_goods_image_table --create=shop_goods_image
+14、收货地址
+php artisan make:migration create_shop_reicv_addr_table --create=shop_reicv_addr
+15、购物车
+php artisan make:migration create_shop_cart_table --create=shop_cart
+16、订单
+php artisan make:migration create_shop_order_table --create=shop_order
+17、订单明细
+php artisan make:migration create_shop_order_detail_table --create=shop_order_detail
+18、订单状态
+php artisan make:migration create_shop_order_status_table --create=shop_order_status
+19、商品销售明细记录
+php artisan make:migration create_shop_sele_table --create=shop_sele
+20、商品评价
+php artisan make:migration create_shop_goods_comments_table --create=shop_goods_comments
