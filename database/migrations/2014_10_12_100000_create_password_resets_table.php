@@ -8,13 +8,14 @@ class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
+     *自带重置密码表
      * @return void
      */
     public function up()
     {
         Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
+//            ->index()
+            $table->string('email');
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
@@ -22,7 +23,7 @@ class CreatePasswordResetsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *数据表回滚
      * @return void
      */
     public function down()

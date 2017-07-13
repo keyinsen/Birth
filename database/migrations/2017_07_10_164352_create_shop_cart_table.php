@@ -4,22 +4,24 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateShopCartTable extends Migration
 {
     /**
      * Run the migrations.
-     *自带用户表
+     *购物车表
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('shop_cart', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-//            ->unique()
-            $table->string('email');
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('uid');
+            $table->integer('gid');
+            $table->string('gname');
+            $table->float('price');
+            $table->string('art_path');
+            $table->float('discount');
+            $table->integer('num');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('shop_cart');
     }
 }

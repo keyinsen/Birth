@@ -4,33 +4,34 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateShopUserTable extends Migration
 {
     /**
      * Run the migrations.
-     *自带用户表
+     *用户表
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-//            ->unique()
+        Schema::create('shop_user', function (Blueprint $table) {
+            $table->increments('uid');
             $table->string('email');
             $table->string('password');
-            $table->rememberToken();
+            $table->string('uname');
+            $table->integer('gender');
+            $table->string('tel');
+            $table->string('ip');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *回滚
+     *回滚用户表
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('shop_user');
     }
 }

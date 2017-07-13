@@ -4,7 +4,11 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+/**
+ * Run the database seeds.
+ *管理员类
+ * @return void
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','remember_token'
     ];
 
     /**

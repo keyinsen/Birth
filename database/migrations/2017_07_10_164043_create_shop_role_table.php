@@ -4,33 +4,31 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateShopRoleTable extends Migration
 {
     /**
      * Run the migrations.
-     *自带用户表
+     *创建角色表
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('shop_role', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-//            ->unique()
-            $table->string('email');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('title')->comment('角色');
+            $table->string('description')->comment('角色描述');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *回滚
+     *回滚数据库
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('users');
+    public function down(){
+
+        Schema::dropIfExists('shop_role');
+
     }
 }

@@ -4,33 +4,30 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateShopGoodsAttrTable extends Migration
 {
     /**
      * Run the migrations.
-     *自带用户表
+     *商品特征值表
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-//            ->unique()
-            $table->string('email');
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('shop_goods_attr', function (Blueprint $table) {
+            $table->increments('gid');
+            $table->string('attr');
+            $table->string('value');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *回滚
+     *
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('shop_goods_attr');
     }
 }

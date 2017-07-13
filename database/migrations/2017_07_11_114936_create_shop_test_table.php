@@ -4,33 +4,33 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateShopTestTable extends Migration
 {
     /**
      * Run the migrations.
-     *自带用户表
+     *创建测试表
      * @return void
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('shop_test', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-//            ->unique()
-            $table->string('email');
-            $table->string('password');
-            $table->rememberToken();
+            $table->integer('aa');
+            $table->string('test');
+            $table->string('test1');
+            $table->string('test2');
+            $table->string('test3');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *回滚
+     *修改测试表
      * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('shop_test');
     }
 }

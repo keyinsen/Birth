@@ -1,5 +1,6 @@
 <?php
-
+use App\Models\Admin;
+use App\Models\Test\RoleClass;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -14,9 +15,19 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
-
     return [
         'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'password' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
+    ];
+});
+
+//后台管理员工厂测试
+$factory->define(Admin::class, function (Faker\Generator $faker) {
+    static $password;
+    return [
+        'uname' => $faker->email,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),

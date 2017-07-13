@@ -3,7 +3,7 @@
 2、config 文件夹中经常配置的一般有两个文件：app.php 和 database.php 两个文件，他们一个是配置项目杂项的、一个是配置数据库的。
 
 
-项目构建
+项目构建（创建删除表，添加删除字段、修改表名字段名、修改字段修饰）  创建是自上而下的 按照时间来，回滚是自下而上了 倒序
 一、 利用数据库迁移建表 composer dump-autoload(自动加载命令执行成功)
 1、创建管理员表
 php artisan make:migration create_shop_admin_table --create=shop_admin
@@ -45,3 +45,39 @@ php artisan make:migration create_shop_order_status_table --create=shop_order_st
 php artisan make:migration create_shop_sele_table --create=shop_sele
 20、商品评价
 php artisan make:migration create_shop_goods_comments_table --create=shop_goods_comments
+
+21、测试表
+php artisan make:migration create_shop_test_table --create=shop_test
+二、在迁移里面进行修改操作
+1、生成添加字段文件
+php artisan make:migration add_votes_to_users_table --table=users
+2、生成重命名数据表文件
+[重命名带外键的数据表#  在重命名前，你需要检查外键的约束涉及到的数据表名需要在迁移文件中显式的提供，而不是让 Laravel 按照约定来设置一个名称。因为那样会让外键约束关联到旧的数据表上。]
+php artisan make:migration rename_password_resets_table --table=password_resets
+3、重命名字段名
+【在修改字段之前，请务必在你的 composer.json 中增加 doctrine/dbal 依赖。Doctrine DBAL 函数库被用于判断当前字段的状态以及创建调整指定字段的 SQL 查询。】
+php artisan make:migration renamecolumn_shop_test_table --table=shop_test
+4、修改字段
+php artisan make:migration updatecolumn_shop_test_table --table=shop_test
+5、移除字段
+php artisan make:migration dropcolumn_shop_test_table --table=shop_test
+php artisan make:migration dropcolumn_users_table --table=users
+6、创建索引[索引长度不能超过1000]
+MySQL错误“Specified key was too long; max key length is 1000 bytes”的解决办法  http://www.jb51.net/article/24499.htm
+
+【若要移除索引，则必须指定索引的名称。Laravel 默认会自动给索引分配合理的名称。其将数据表名称、索引的字段名称及索引类型简单地连接在了一起】
+php artisan make:migration createindex_shop_test_table --table=shop_test
+7、创建外键约束
+php artisan make:migration addforeign_shop_test_table --table=shop_test
+
+三、编写 Seeders# 数据填充
+php artisan make:seeder UsersTableSeeder  生成填充
+php artisan db:seed（固定运行DatabaseSeeder，可以用call调用其他的类）
+php artisan db:seed --class=UsersTableSeeder(单独运行一个类)
+三、创建模型工厂
+
+四、创建模型：(模型目录要建立在哪里都行，固定要继承框架模型类)
+php artisan make:model Models\Access\ShopUsersClass
+php artisan make:model Models\ShopUsersClass
+php artisan make:model Models\Test\RoleClass
+php artisan make:model Models\Test\AdminClass
