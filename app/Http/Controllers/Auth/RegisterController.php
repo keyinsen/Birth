@@ -44,6 +44,8 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
+     *
+     * validator 方法包含了新用户的验证规则，你可以按需要自定义该方法。
      */
     protected function validator(array $data)
     {
@@ -53,12 +55,13 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return User
+     *
+     * create 方法负责使用 Eloquent ORM 在数据库中创建新的 App\User 记录。当然，你也可以基于自己的需求自定义该方法。
      */
     protected function create(array $data)
     {

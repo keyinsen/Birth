@@ -36,4 +36,11 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+//你还可以自定义实现用户认证的 「guard」，要实现这一功能
+//    protected function guard()
+//    {
+//        return Auth::guard('guard-name');
+//    }
+
+
 }

@@ -1,3 +1,5 @@
+从零构建laravel项目
+
 1、key:generate:设置应用程序秘钥，如果你没有设置应用程序密钥，你的用户 Session 和 其他加密数据将不安全！
 
 2、config 文件夹中经常配置的一般有两个文件：app.php 和 database.php 两个文件，他们一个是配置项目杂项的、一个是配置数据库的。
@@ -70,14 +72,31 @@ php artisan make:migration createindex_shop_test_table --table=shop_test
 7、创建外键约束
 php artisan make:migration addforeign_shop_test_table --table=shop_test
 
-三、编写 Seeders# 数据填充
+三、创建对应的模型工厂,再编写 Seeders# 数据填充 (也能不使用填充,自己写个类也行，看AdminController)
+
 php artisan make:seeder UsersTableSeeder  生成填充
 php artisan db:seed（固定运行DatabaseSeeder，可以用call调用其他的类）
 php artisan db:seed --class=UsersTableSeeder(单独运行一个类)
-三、创建模型工厂
 
 四、创建模型：(模型目录要建立在哪里都行，固定要继承框架模型类)
 php artisan make:model Models\Access\ShopUsersClass
 php artisan make:model Models\ShopUsersClass
 php artisan make:model Models\Test\RoleClass
 php artisan make:model Models\Test\AdminClass
+五、用户认证系统  http://d.laravel-china.org/docs/5.4/authentication
+1、【想要快速起步？ 在一个全新的 Laravel 应用中运行 php artisan make:auth 和 php artisan migrate 命令，然后可以用浏览器访问 http://your-app.dev/register
+或者你在程序中定义的其他 url。这个两个简单的命令就可以搭建好整个认证系统的脚手架。】
+2、【Laravel 中实现用户认证非常简单。实际上，几乎所有东西都已经为你配置好了。配置文件位于 config/auth.php，其中包含了用于调整认证服务行为的、标注好注释的选项配置。】
+3、Laravel 通过运行如下命令可快速生成认证所需要的路由和视图：
+php artisan make:auth
+4、
+// 获取当前已通过认证的用户...
+$user = Auth::user();
+// 获取当前已通过认证的用户id...
+$id = Auth::id();
+// $request->user() 返回认证过的用户的实例...
+
+5、检查用户是否登录：
+if (Auth::check()) {
+    // 这个用户已经登录...
+}

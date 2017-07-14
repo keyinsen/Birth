@@ -11,6 +11,7 @@ class AdminController extends Controller
     {
     }
 
+//    插入单条数据
     public function index(Request $request){
 
          $admin = new Admin();
@@ -25,5 +26,16 @@ class AdminController extends Controller
          if ($a){
              echo $a;
          }
+    }
+
+//批量插入数据的另外一种方式
+    public function add(){
+        factory(Admin::class,20)->create()->each(function ($u){
+             $arr=[
+                'uname'=>$u['uname'],
+                'email'=>$u['email'],
+                'password'=>$u['password']
+            ];
+        });
     }
 }

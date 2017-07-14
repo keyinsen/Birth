@@ -16,4 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('admin/index','AdminController@index');
+
+Route::get('admin/add','AdminController@add');
 //get('character', 'GamesController@character');
+
+//Laravel 通过运行如下命令可快速生成认证所需要的路由和视图：
+//php artisan make:auth
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

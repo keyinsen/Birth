@@ -12,7 +12,7 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-
+//框架自带 认证组件
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',

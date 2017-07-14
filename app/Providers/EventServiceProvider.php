@@ -9,7 +9,7 @@ class EventServiceProvider extends ServiceProvider
 {
     /**
      * The event listener mappings for the application.
-     *
+     *事件监听器
      * @var array
      */
     protected $listen = [
